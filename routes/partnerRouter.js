@@ -10,12 +10,12 @@ partnerRouter.route('/')
 .get((req, res) => {
     res.end('Will send all the partners to you');
 })
-.post((req, res) => {
-    res.end(`Will add the partner: ${req.body.name} with description: ${req.body.description}`);
+.put((req, res) => { // Update the partner info
+    res.end(`Will update the partner: ${req.body.name} with description: ${req.body.description}`);
 })
-.put((req, res) => {
+.post((req, res) => {   // Prevent adding a new partner on top of an existing on
     res.statusCode = 403;
-    res.end('PUT operation not supported on /partners');
+    res.end(`POST operation not supported on partner`);
 })
 .delete((req, res) => {
     res.end('Deleting all partners');
