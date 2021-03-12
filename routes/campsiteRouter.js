@@ -32,12 +32,12 @@ campsiteRouter.route('/:campsiteId')
 .get((req, res) => {
     res.end(`Will send the campsite to you`);
 })
-.put((req, res) => { // Update the campsite info
-    res.end(`Will update the campsite: ${req.body.name} with description: ${req.body.description}`);
-})
 .post((req, res) => {   // Prevent adding a new campsite on top of an existing on
     res.statusCode = 403;
     res.end(`POST operation not supported on campsite`);
+})
+.put((req, res) => { // Update the campsite info
+    res.end(`Will update the campsite: ${req.body.name} with description: ${req.body.description}`);
 })
 .delete((req, res) => {
     res.end(`Deleting campsite`);

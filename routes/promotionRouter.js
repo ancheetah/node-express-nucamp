@@ -10,12 +10,12 @@ promotionRouter.route('/')
 .get((req, res) => {
     res.end('Will send all the promotions to you');
 })
-.put((req, res) => { // Update the promotion info
-    res.end(`Will update the promotion: ${req.body.name} with description: ${req.body.description}`);
+.post((req, res) => {
+    res.end(`Will add the promotion: ${req.body.name} with description: ${req.body.description}`);
 })
-.post((req, res) => {   // Prevent adding a new promotion on top of an existing on
+.put((req, res) => {
     res.statusCode = 403;
-    res.end(`POST operation not supported on promotion`);
+    res.end(`PUT operation not supported on promotion`);
 })
 .delete((req, res) => {
     res.end('Deleting all promotions');
@@ -30,12 +30,12 @@ promotionRouter.route('/:promotionId')
 .get((req, res) => {
     res.end(`Will send the promotion to you`);
 })
-.post((req, res) => {
-    res.end(`Will add the promotion: ${req.body.name} with description: ${req.body.description}`);
-})
-.put((req, res) => {
+.post((req, res) => {   // Prevent adding a new promotion on top of an existing on
     res.statusCode = 403;
-    res.end(`PUT operation not supported on promotion`);
+    res.end(`POST operation not supported on promotion`);
+})
+.put((req, res) => { // Update the promotion info
+    res.end(`Will update the promotion: ${req.body.name} with description: ${req.body.description}`);
 })
 .delete((req, res) => {
     res.end(`Deleting promotion`);
